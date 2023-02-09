@@ -1,6 +1,7 @@
-﻿name: Sync Files to Other Repos
+name: Sync Files to Other Repos
 
 on: 
+  workflow_dispatch:
   push:
     paths:
       - '.gitignore'
@@ -12,8 +13,8 @@ jobs:
     strategy:
       matrix:
         repo: [GameCraftGuild/Unity-Package-Template]
-      include:
-        - files: '.gitattributes .gitignore'
+        include:
+          - files: '.gitattributes .gitignore'
     steps:
       - name: Checkout
         uses: actions/checkout@v2
