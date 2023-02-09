@@ -17,3 +17,5 @@ jobs:
           source_file: '.gitattributes .gitignore'
           destination_repo: 'GameCraftGuild/Unity-Package-Template'
           destination_folder: '.'
+          user_email: 'mitchkm21@gmail.com'
+          user_name: 'mitchkm'
