@@ -1,10 +1,19 @@
-﻿name: Push files to GameCraftGuild/Unity-Package-Template
+﻿name: Sync Files to Other Repos
 
-on: push
+on: 
+  push:
+    paths:
+      - '.gitignore'
+      - '.gitattributes'
 
 jobs:
-  copy-file:
+  sync-files:
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        repo: [GameCraftGuild/Unity-Package-Template]
+      include:
+        - files: '.gitattributes .gitignore'
     steps:
       - name: Checkout
         uses: actions/checkout@v2
@@ -14,8 +23,8 @@ jobs:
         env:
           API_TOKEN_GITHUB: ${{ secrets.API_TOKEN_GITHUB }}
         with:
-          source_file: '.gitattributes .gitignore'
-          destination_repo: 'GameCraftGuild/Unity-Package-Template'
+          source_file: ${{ matrix.files }}
+          destination_repo: ${{ matrix.repo }}
           destination_folder: '.'
           user_email: 'mitchkm21@gmail.com'
           user_name: 'mitchkm'
