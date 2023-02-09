@@ -1,4 +1,4 @@
-﻿name: Push File
+﻿name: Push files to GameCraftGuild/Unity-Package-Template
 
 on: push
 
@@ -9,7 +9,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
 
-      - name: Push files to GameCraftGuild/Unity-Package-Template
+      - name: Push files
         uses: dmnemec/copy_file_to_another_repo_action@main
         env:
           API_TOKEN_GITHUB: ${{ secrets.API_TOKEN_GITHUB }}
